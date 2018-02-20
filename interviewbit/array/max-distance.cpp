@@ -1,30 +1,24 @@
 int Solution::maximumGap(const vector<int> &A) {
     int n = A.size();
-    vector<bool> tt(n);
-    int i = n-1;
-    int j = n-1;
-    int mini = A[0];
-    int maxi = -1;
-    for(int i=0;i<n;i++){
-        if(A[i]>mini){
-            tt[i]=false;
-        }else{
-            mini = A[i];
-            tt[i] = true;
-        }
+    vector<int> LMin(n+1);
+    vector<int> RMax(n+1);
+    LMin[0] = A[0];
+    for(int i=1;i<n;i++){
+        LMin[i] = min(LMin[i-1],A[i]);
     }
-    while(i>=0){
-        if(tt[i]==false){
-            i--;
-            continue;
+    RMax[n-1]=A[n-1];
+    for(int i=n-2;i>=0;i--){
+        RMax[i] = max(RMax[i+1],A[i]);
+    }
+    int i=0,j=0;
+    int maxi=-1;
+    while(i<n and j<n){
+        if(LMin[i]<=RMax[j]){
+            maxi = max(maxi,j-i);
+            j+=1;
         }
-        while((A[i]>A[j])and(j>i)){
-            j--;
-        }
-        if((j-i)>maxi){
-            maxi = j-i;
-        }
-        i--;
+        else
+            i+=1;
     }
     return maxi;
 }
