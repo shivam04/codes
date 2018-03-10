@@ -12,11 +12,16 @@ int main()
 	    for(i=0;i<n;i++)
 	    cin>>a[i];
 	    sort(a,a+n);
-	    int sum = 0;
-	    for(i=0;i<n/2;i++){
-	        sum = sum+2*abs(a[i]-a[n-1-i]);
+	    i=0;
+	    int j = n-1;
+	    while(i<j){
+	        cout<<a[j--]<<" ";
+	        cout<<a[i++]<<" ";
 	    }
-	    cout<<sum<<"\n";
+	    if(n%2==1){
+	        cout<<a[i];
+	    }
+	    cout<<"\n";
 	}
 	return 0;
 }
