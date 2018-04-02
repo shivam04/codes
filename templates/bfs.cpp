@@ -3,14 +3,15 @@ void bfs (int start) {
 	queue<int> q;
 	q.push(start);
 	int i;
-	ff1(int i,0,n){
+	for(int i=0;i<n;i++){
 		visited[i]=0;
 	}
 	visited[start]=1;
 	while(!q.empty()){
 		int temp = q.front();
+		cout<<temp<<" ";
 		q.pop();
-		ff0(i,0,g[temp].size()){
+		for(int i=0;i<g[temp].size();i++){
 			int u = g[temp][i];
 			if(visited[u]==0){
 				visited[u]=1;
