@@ -27,7 +27,6 @@ vector<int> Solution::lszero(vector<int> &A) {
         }
     }
     
-    /*cout<<max_i<<" "<<max_len<<"\n";*/
     vector<int> ans;
     if(max_i==-1)
     return ans;
