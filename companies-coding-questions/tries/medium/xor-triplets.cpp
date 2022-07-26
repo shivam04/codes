@@ -38,17 +38,13 @@ long query(TrieNode* root, int n, int idx) {
     for(int i=31;i>=0;i--) {
         int bit = (n>>i)&1;
         if(bit==0) {
-            if(root->one) {
-                root = root->one;
-            } else {
-                root = root->zero;
-            }
+            if(root->zero==nullptr)
+                return 0;
+            root = root->zero;
         } else {
-            if(root->zero) {
-                root = root->zero;
-            } else {
-                root = root->one;
-            }
+            if(root->one==nullptr)
+                return 0;
+            root = root->one;
         }
     }
     long sz = (long)root->idx;
@@ -66,7 +62,7 @@ int Solution::solve(vector<int> &A) {
     for(int i=0;i<n;i++) {
         int x = A[i];
         insert(root, cX, i);
-        cX ^= A[i];
+        cX ^= x;
         ans = (ans%mod + query(root, cX, i)%mod)%mod;
     }
     return ans;
