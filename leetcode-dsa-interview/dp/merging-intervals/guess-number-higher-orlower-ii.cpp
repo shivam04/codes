@@ -30,12 +30,13 @@ public:
         for(int len=2;len<=n;len++) {
             for(int start=1;start<=n-len+1;start++) {
                 int ans = INT_MAX;
-                for(int piv=start;piv<start+len-1;piv++) {
-                    int res = piv + max(dp[start][piv-1], dp[piv+1][start+len-1]);
+                int end = start+len-1;
+                for(int piv=start;piv<end;piv++) {
+                    int res = piv + max(dp[start][piv-1], dp[piv+1][end]);
                     ans = min(ans,res);
                 }
-                dp[start][start+len-1] = ans;
-            }
+                dp[start][end] = ans;
+            } 
         }
         return dp[1][n];
     }
