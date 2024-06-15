@@ -26,13 +26,12 @@ class Graph {
 
 		void findAPB(int v) {
 			visited[v] = 1;
-			disc[v] = low[v] = times+1;
+			disc[v] = low[v] = ++times;
 			int child = 0;
 			for (auto u: graph[v]) {
 				if (visited[u] == false) {
 					child = child + 1;
 					parent[u] = v;
-					times++;
 					findAPB(u);
 					low[v] = min(low[v], low[u]);
 					if (low[u] > disc[v]) {
