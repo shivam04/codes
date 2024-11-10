@@ -1,3 +1,4 @@
+// O(n^2)
 class Solution {
 public:
     vector<int> countRectangles(vector<vector<int>>& rectangles, vector<vector<int>>& points) {
@@ -21,5 +22,29 @@ public:
         }
 
         return ans;
+    }
+};
+
+
+
+// O(nlogn)
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        if (n==0)
+            return 0;
+        vector<int> lis;
+        lis.push_back(nums[0]);
+        for (int i = 1; i < n; i++) {
+            if (nums[i] > lis.back()) {
+                lis.push_back(nums[i]);
+            } else {
+                int low = lower_bound(lis.begin(), lis.end(), nums[i]) - lis.begin();
+                lis[low] = nums[i];
+            }
+        }
+        return lis.size();
+        
     }
 };
