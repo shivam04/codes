@@ -12,13 +12,13 @@ int Solution::threeSumClosest(vector<int> &A, int B) {
                 return A[i]+A[l]+A[r];
             }
             else if(A[i]+A[l]+A[r]>B){
-                if((A[i]+A[l]+A[r])<=mini){
+                if((A[i]+A[l]+A[r]-B)<=mini){
                     mini = A[i]+A[l]+A[r]-B;
                     ans =A[i]+A[l]+A[r];
                 }
                 r--;
             }else{
-                if((A[i]+A[l]+A[r])<=mini){
+                if(B-(A[i]+A[l]+A[r])<=mini){
                     mini = B-(A[i]+A[l]+A[r]);
                     ans =A[i]+A[l]+A[r];
                 }
