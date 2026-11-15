@@ -5,7 +5,7 @@ public:
         for(int num: nums) {
             mp[num] += 1;
         }
-        vector<pair<sint, int>> data;
+        vector<pair<int, int>> data;
         vector<int> ans;
         for(auto it: mp) {
             data.push_back({it.first, it.second});
